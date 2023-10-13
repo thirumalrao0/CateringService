@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+        integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+        integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .bg-thiru {
+            background-color: rgb(194, 25, 25);
+        }
+
+        .text-thir {
+            color: rgb(243, 242, 222);
+        }
+
+        .navlogo {
+            border-radius: 50px;
+        }
+
+        .card-container {
+            box-shadow: 5px 5px 5px red;
+        }
+
+        .notes {
+            font-family: 'Playfair Display', Georgia, "Times New Roman", serif !important;
+            font-style: italic;
+            color: rgb(158, 47, 47);
+            text-align: center;
+        }
+        nav{
+            position: sticky;
+            top: 0;
+        }
+
+        .videocard {
+            border: 2px solid rgb(158, 47, 47);
+        }
+
+        .footer-section-mail-id {
+            color: #959ead;
+            font-family: "Roboto";
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .footer-section-address {
+            color: #959ead;
+            font-family: "Roboto";
+            font-size: 14px;
+        }
+
+        .follow-us-icon-container {
+            
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            margin: 15px;
+            padding-top: 22px;
+            padding-bottom: 14px;
+            padding-right: 16px;
+            padding-left: 22px;
+        }
+
+        .follow-us-section {
+            background-color: white;
+        }
+
+        .follow-us-section-heading {
+            font-family: "Roboto";
+            font-weight: 700;
+            font-size: 28px;
+            color: #183b56;
+            text-align: center;
+        }
+
+        .footer-section {
+            background-color: #0d2436;
+        }
+        .navpostion{
+            position:sticky;
+            top: 0;
+            z-index: 2;
+        }
+    .carousel-top{
+        margin-top: -8px;
+    }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-thiru navbar-light h6 navpostion">
+        <div class="container-fluid ">
+            <a href="" class="navbar-brand p-2"><img class="navlogo" width="80" height="80"
+                    src="data:image/jpeg;base64,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"
+                    alt=""></a>
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mynav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="mynav">
+
+
+                        <ul class="navbar-nav d-flex justify-content-end">
+                            <li class="nav-item p-2"><a class="nav-link text-thir active" href="index.html">Home</a></li>
+                            <li class="nav-item p-2">
+                                <div class="dropdown">
+
+                                    <a class=" action nav-link text-thir  dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false" href="">CateringOptions</a>
+
+                                    <ul class="dropdown-menu ">
+                                        <li><a class="dropdown-item text-success h6" href="veg.html">Vegetarian Catering</a>
+                                        </li>
+                                        <li><a class="dropdown-item text-danger h6" href="nonveg.html">Non-Veg Catering</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                          
+                            <li class="nav-item p-2"><a class="nav-link text-thir" data-bs-target="#mymodal" data-bs-toggle="modal" href="#">CateringService</a></li>
+                            <li class="nav-item p-2"><a class="nav-link text-thir" href="contact.html">ContactUs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    
+ 
+    <!-- carousel-section -->
+    <div class="carousel-top">
+        <div class="carousel slide" data-bs-ride="carousel" id="mycarousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100 img-fluid" height="600"
+                        src="https://image.lexica.art/full_jpg/548a1f23-c614-4564-9ddd-03811d463013" alt="">
+                </div>
+                <div class="carousel-item ">
+                    <img class="w-100 img-fluid" height="600"
+                        src="https://image.lexica.art/full_jpg/5b464aad-a616-4387-b4f0-bc234e4354ea" alt="">
+                </div>
+                <div class="carousel-item ">
+                    <img class="w-100 img-fluid" height="600"
+                        src="https://image.lexica.art/full_jpg/ce0f3531-0bd7-4f7e-b9e3-91f6a44c1151" alt="">
+                </div>
+                <a href="" class="carousel-control-prev" data-bs-target="#mycarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span></a>
+                <a href="" class="carousel-control-next" data-bs-target="#mycarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span></a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+    <!-- Your Event, Our Solution! -->
+    <div class="container card-container mb-3">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h1 class="notes">Your Event, our Solutions</h1>
+                <p class="notes text-dark">We understand that delivering fantastic dining experiences to your guests is
+                    your toppriority. With our experience, we offer tailored solutions that ensure outstanding food and
+                    service for all types of occasions.</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-4 col-12 mt-2">
+                <div class="card ">
+                    <img class="card-img-top"
+                        src="https://cdn.shortpixel.ai/spai/w_355+q_lossy+ret_img+to_webp/i0.wp.com/elitecaterers.in/wp-content/uploads/2019/02/birthday-catering-candles.jpeg?resize=500%2C332&ssl=1"
+                        alt="">
+
+                    <div class="card-body">
+                        <h5 class="notes">Catering Services In Hyderabad</h5>
+                        <p class="text-center notes text-dark"> House Warming & Get-Togethers <br>
+
+                            Cradle Ceremonies<br>
+
+                            Social & Festival Feasts<br>
+
+                            Birthdays</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 mt-2">
+                <div class="card ">
+                    <img class="card-img-top"
+                        src="https://i0.wp.com/elitecaterers.in/wp-content/uploads/2019/08/Hyderabad-Valima-Dinner-Menu.jpg?w=1200&ssl=1"
+                        alt="">
+
+                    <div class="card-body">
+                        <h5 class="notes">Wedding Catering Services PAN India</h5>
+                        <p class="text-center notes text-dark"> Weddings & Receptions <br>
+
+                            Engagements & Receptions <br>
+
+                            Pre/Post Wedding Functions <br>
+
+                            Anniversaries
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 mt-2">
+                <div class="card ">
+                    <img class="card-img-top"
+                        src="https://i0.wp.com/elitecaterers.in/wp-content/uploads/2019/05/Welcome-Drink-960x639.jpg?w=636&ssl=1"
+                        alt="">
+
+                    <div class="card-body">
+                        <h5 class="notes">
+                            Corporate Catering Services</h5>
+                        <p class="text-center notes text-dark">Welcomes & Farewells <br>
+
+                            Business Lunches & Conferences <br>
+
+                            Product Launches & Exhibitions <br>
+
+                            Corporate Catering
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Menu -->
+    <div class="container  mt-3 p-3 videocard">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <h3 class="notes">Best Catering Service In Hyderabad</h3>
+                <p class="notes text-dark">Renowned and highly praised, Elite Caterers stands as a leading catering
+                    service in Hyderabad, providing an exceptionally memorable experience for our customers.
+
+                    With our team of skilled experts, we’re equipped to handle events of all sizes. This way, you can
+                    fully relish and treasure your special moments.</p>
+            </div>
+            <div class="col-md-6 col-12 text-center">
+                <iframe class="w-100" src="https://www.youtube.com/embed/dvU-frCQbqc?si=FIlujjWmj6Brn23J"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row">
+            <h1 class="notes">Catering Services!</h1>
+        </div>
+        <!-- catering services! -->
+    </div>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-4 col-12 mt-2">
+                <div class="card ">
+                    <img class="card-img-top"
+                        src="https://cdn.shortpixel.ai/spai/w_343+q_lossy+ret_img+to_webp/i0.wp.com/elitecaterers.in/wp-content/uploads/2019/09/Birthday-catering.jpg?resize=960%2C640&ssl=1"
+                        alt="">
+
+                    <div class="card-body">
+                        <h5 class="notes">Small Party Catering</h5>
+                        <p class="text-center notes text-dark"> House Warming Ceremonies <br><br>
+
+                            Cradle Ceremonies & Birthdays <br><br>
+
+                            Family Gatherings & Sporting Events <br><br>
+
+                            Graduations & Class Reunions<br><br>
+
+                            Social & Festival Feasts<br><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 mt-2">
+                <div class="card ">
+                    <img class="card-img-top"
+                        src="https://i0.wp.com/elitecaterers.in/wp-content/uploads/2019/05/christian-caterers-hyderabad-960x640.jpg?w=600&ssl=1"
+                        alt="">
+
+                    <div class="card-body">
+                        <h5 class="notes">Catering For Wedding</h5>
+                        <p class="text-center notes text-dark"> Destination Weddings
+
+                            Engagements & Bridal Showers<br><br>
+
+                            Bachelorette & Wedding Rehearsals<br><br>
+
+                            Pre Wedding Functions<br><br>
+
+                            Weddings & Receptions<br><br>
+
+                            Post Wedding Functions & Anniversaries<br><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 mt-2">
+                <div class="card ">
+                    <img class="card-img-top"
+                        src="https://cdn.shortpixel.ai/spai/w_353+q_lossy+ret_img+to_webp/i0.wp.com/elitecaterers.in/wp-content/uploads/2019/09/Staff-Lucnh.jpg?resize=960%2C559&ssl=1"
+                        alt="">
+
+                    <div class="card-body">
+                        <h5 class="notes">
+                            Corporate Catering Services</h5>
+                        <p class="text-center notes text-dark">Annual Corporate Celebrations<br><br>
+
+                            Institutional & Annual Day Events<br><br>
+
+                            Welcomes & Farewells<br><br>
+
+                            Fundraisers & Art Showings<br><br>
+
+                            Business Luncheons & Conferences<br><br>
+
+                            Exhibitions & Carnivals<br><br>
+
+
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- follows -->
+    <div class="follow-us-section pt-5 pb-5" id="Followussection">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="follow-us-section-heading">Follow Us</h1>
+                    <div class="col-12">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="follow-us-icon-container">
+                                <a href=""><i class="fab fa-twitter icon text-dark"></i></a>
+                            </div>
+                            <div class="follow-us-icon-container">
+                                <a href="https://www.instagram.com/"><i class="fab fa-instagram text-dark"
+                                        aria-hidden="true"></i></a>
+
+                            </div>
+                            <div class="follow-us-icon-container">
+                                <a href=""><i class="fab fa-facebook icon text-dark"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer-section pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img class="navlogo " width="80" height="80"
+                        src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHsAewMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAAAwEFBgcEAv/EADgQAAEDAwMCBQMDAgQHAQAAAAECAwQABREGEiExUQcTMkFxFGGBIlKRFaEjQnKCFlNjg6KxwQj/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A7clI2jgdK+to7ChPpHxU0EbR2FG0dhU0UEbR2FG0dhU0UEbR2FG0dhU0UEbR2FG0dhU0UEbR2FG0dhU0UEbR2FG0dhU0UHztHYUpxI3ngfxT6S56zQNT6R8VNQn0j4qaAooooCiivh15tlG91aUJ6blHAoPuio3CjNBNFV869W2CpKJUxlDijhDQVlaz2CRyT8Cslf8AXclyeq0aKt39XuacecsnDEb/AFqyMn7ZoN7RXMi74tQ0/VONWKYlPKorZKVEdgeOfzWs0XqhnVFsXISw5FlMOlmVFc9TLg6j4+9BoaKjPNTQFJc9Zp1Jc9ZoGp9I+KmoT6R8VNAVB6VNFBkNRaomQpb8GJHQh1GMOO8hWQNpAHtkn8IV9qwPjtcDcrJp15nd9HJK3tiv3bRgEdxlVbfxFgjMSeG94Ufpnk9wclP8ncj/ALlZBdtZ1rYbhp5iYy5cYbgnRF54yrIWD2CjlX28wdqBfgdrGQ8+vTdxeU6kNlyG4s5KQOqM9scj81fWJL3iPKnXK4SpDeno8hUeHBYcLYkberjhSckHPTOKxvhlom7wNeR1XpgwjDZW+lClgl4KBb/TgnjKufx3rT+Ftwa0pNuOiry4iNIZkqehKcO0PNqx0J9+M/z2oNUnQNibSpqK07EjLGFx4ikshQ+6kgLP5VV9abVb7PDTEtcRmLHT0baTgZ7nufvWM1XrhGibokTFt3CFLVuQy06PqI59+DwUdskEE46VXXjXuoL3bVM6S0reEl4bTLkMhBQk9SgZxu7E8fNB0t+Q0w4whxeFPL2Nj9ytpVj+EmsnI0BAuF3uk+4yZe2c4lRjRX1Mt4SkAFW3BUr84+1ZGXqnUUK6t3e/6TubMC3sqTDYZKVpCyMFx1ef25HA9zWp0x4hafl2lEq5agt6Ja8rdaU55flZ6JAVyQOBn3oPFHiStCaptUOLOkyrDdnTH+nlOFxUZ7aSkoUedpxjBrotc8ZmK11q22zbe2v/AIes7inhKWgpEp/BSAjPVIBzmuh0BSXPWadSXPWaBqfSPipqE+kfFTQFVd81DaLAyh28XBiIlZwjzFcq+B1NPvNyj2e1yrjLVhiM0pxZ+wFcl8ObGnXVwn6v1ayiSguFmNHc5bSByeOyc4H3yaDVvMSNXXaQlbyXtOy4RaZUw5+lSDglzP8AzN4AA9ggn3qu0DpCFovWE2EqQuQ/JhByK6tITlsL/wAROB7g7DnsRXh8JL7EtGh7rJlKX9GxdHERkNoKlKCgkpQgDqSTVzZp941RqSNJuemJVpjwQt2HKde2rUojaULT7gg5x9qC71cyI8i2X4TGIiba8oyXHyQlUdacKTx752EfcV6LtY9P6wt7Dk+NGuEZSQph9JycH3Soe1cl1LG1dqPVNu0pfbrHUqUkSX48JvDUZAzgknlR4Pv7it54ezrZCelWGNqpF2EVI8tpbQQphKeFAKAwpPTp05oKoyfDXw4uTkdLQTPHKz5an1tA843HO34rTwNcWq+pA05NgzHsZLD0gsLH+0pJrBWlm26g1c9qawKtzr8ta0G23fAL23A81opyQDj3HetLcoun/wCkSrpquw2FMFjA8yGrz1bs4xwhPPPeg9911nNshKr9pe4NxOipURaJDYHcgEKA/FVXhJCs9009Lk/QRX2xdJBYW4wkkIKgU4yOOD0r12i96ShXmDaIFyn/AFExtK2Y63nnG8KGQkhWQk49qo73rY6du93h6StcD6OATIubzxUlBeVhOxAB9RwkdOTntQdYQlCUhKEpCQMAAYAr6rEeG2q5N8sESTfn4yJ0yQ6iM22nYXEI7DJ6YVz2FbegKS56zTqS56zQNT6R8VNQn0j4qaDmfj9c1QtHMxEHBmyUpV/pSCs/3AqwWzI0t4SiPb4zr0xqAEpQ0gqUXFjk4HPBUTWe/wD0Ww4uy2h9KCptuUtKuPcoOP8A0a3tx1ZZLVYGrtJmtiKtoKaCFBSnOOAkDqaDl9rlXLSnhraLPbEKZv8AfZavJCxhbKScbiD0wkD+a8GnZL138RGkzL9Kn2jT6XJCZT6xyEpAUcjGQVHjPt81Uapub12vUfUEy/Q4rzwKBGaJddgsnIAwAQVFJJPIOTSJl30rE1F59uXcl2ZTLbb0FLaWy8EYwkkq9JKQSMZoLQakfft+rtZZLcqc63bonPLKFDJx9wgD815BEd0paVXJ+E9AeVAMGIHgA4+85y67j2SlPAz9q8bYuF4stytNv09PdZlXP6+O6hs/4WUlO08YP6TV1dNN6+1UHVXWwKXJdCENyHnUNhhtP+RCN3GTyT1oE2/SN3senrVrSPtUY7Tj7ja1bS01tIbIHuf1E/kVXXOczE0HYdNWtIdeluCfMCOdziuENn7425H2FdSWx4izbYbbKtOmG4a2gyWXXHFBSMdOD2quhaA1JHcgOMx9JxlQHVOR9jT5ws9Sf1cnj37UGZjx2dF+ITX1iVSbixbA40hIyqTMcynCft+oj7BNUNzjXCyWKTB1HHUxMkPKfbjbgpyQ8ePNXg8ISM7R7qOa7DdG9eQoT9xdladkORmlOJQ3BdK1YBO1J3deK5dpC2XrXOpf6sgxZDjDglPyJLaw2V8bWePZOOgoOueHWiY+mrZHfk5fuimQFuuc+Sk8ltHYZJ+TW0rxwlXAreE5uOlIUPKLKlHcMDO7I45zjHtivZQFJc9Zp1Jc9ZoGp9I+KmoT6R8VNB4L3Z4N9trtvujAejOgbkHjkcgg+xHeuMXvwYmOaiLNgS1GtflpP1Ul7esqOd3A57dq7tRQcQleHdj0pMgJu7E26NyTtD3mhpoOZ9G1IzkjJTlWCRjrWxuDVt09aoUnR9ht6/qXMeeGRtbSEkkqPBHpIyTxznsdnc7dEukF6FPYS9GeTtWhXvWBdiX/AEY86tnzLlalcqc2714/6qAMk8Y8xGT+5Jxmgvl3pm/2ZUePcHLLNfbK0KWE70JG0qIzwRhQ7YJx1Br336HdpNsZZstybiykLQVvOICgpI5Ix9//ALWQQ7pa/NLfZW5CW4yWFKYAdZCNwURgAhIynGCE9TxzXpetemZkxyXOu9qkeat5ToWpIKt6UpH+bjbt/v7UF5qVyztOW2XcFPPyYylvQ2mMlTqgnB4HCuD796zCRcdbXFuYHHIUCOfNjSmVjDRGNwJzgqIzyOgx1BIq1euOn4FotiJT6pyrWUuNSEI2JKwkp3FZIRyCc/q96qhJvOsQmLZY7cO0Z5fU2QxjPsDgunsMBHOSVYoPRPucrVGp4sGzPuNR42HnJCOC23nlY49S8bUj9pWehFdCbbS2MISlI64SMVXafscSxQTGihS1LVvefdO5x5Z6qUfc1aUBRRRQFJc9Zp1Jc9ZoGp9I+KmoT6R8VNAUUUUBUYqaKCkumk7DdH/qJtrjrkjo+hOxwf704P8Aeq86BtGeJF2A7C5vYH/lWrooM/C0Vp2HIRJTbGnpKPS/KJeWPgrJIq/CQOlTRQFFFFAUUUUBSXPWadSXPWaBifSPivqkJWraOfap3K70DqKTuV3o3K70DqKTuV3o3K70DqKTuV3o3K70DqKTuV3o3K70DqKTuV3o3K70DqKTuV3o3K70DjSHD+s1O9XekuLVvPNB/9k="
+                        alt="">
+                    <h5 class="notes text-white mt-2">orderfood@tirumalacatering.com</h5>
+                    <p class="notes text-white">
+                        123 Ayur Vigyan Nagar, Hyderabad, India.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- form-dialog box -->
+<div class="modal fade" id="mymodal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <iframe frameborder="0" style="height:500px;width:99%;border:none;" src='https://forms.zohopublic.in/udukulathirumalarao7680/form/Customerdetails/formperma/cSiKV08fEJ7nTHSXA4uzDJ10MvFtGUdZC_2ZWrfqEwI'></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
